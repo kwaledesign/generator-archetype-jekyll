@@ -5,14 +5,14 @@ var path    = require('path');
 var helpers = require('yeoman-generator').test;
 
 
-describe('archetype-jekyll generator', function () {
+describe('jekyll generator', function () {
   beforeEach(function (done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
       if (err) {
         return done(err);
       }
 
-      this.app = helpers.createGenerator('archetype-jekyll:app', [
+      this.app = helpers.createGenerator('jekyll:app', [
         '../../app'
       ]);
       done();
@@ -27,9 +27,9 @@ describe('archetype-jekyll generator', function () {
     ];
 
     helpers.mockPrompt(this.app, {
-      'someOption': true
+      'someOption': 'Y'
     });
-    this.app.options['skip-install'] = true;
+
     this.app.run({}, function () {
       helpers.assertFiles(expected);
       done();
