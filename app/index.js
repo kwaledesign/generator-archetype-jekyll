@@ -99,11 +99,11 @@ ArchetypeJekyllGenerator.prototype.askForTools = function askForTools() {
   console.log('\nWire tools and preprocessors.'.yellow + ' ☛');
 
   var prompts = [{
-/*    name: 'cssPre',
+    name: 'cssPre',
     type: 'list',
     message: 'Use a css preprocessor?',
     choices: ['None', 'Sass', 'Compass']
-  },*/
+  },
 /*  {
     name: 'autoPre',
     type: 'confirm',
@@ -119,9 +119,9 @@ ArchetypeJekyllGenerator.prototype.askForTools = function askForTools() {
   this.prompt(prompts, function (props) {
 
     // Multiple choice 'none' to false
-//    this.cssPre  = props.cssPre === 'None' ? false : props.cssPre.toLowerCase();
+    this.cssPre  = props.cssPre === 'None' ? false : props.cssPre.toLowerCase();
     this.jsPre   = props.jsPre === 'None' ? false : props.jsPre.toLowerCase();
-//    this.autoPre = props.autoPre;
+/*    this.autoPre = props.autoPre; */
 
     cb();
   }.bind(this));
@@ -251,20 +251,20 @@ ArchetypeJekyllGenerator.prototype.askForh5bp = function askForh5bp() {
 
     this.prompt(prompts, function (props) {
 
-//      this.h5bpCss       = props.h5bpCss;
+      this.h5bpCss       = props.h5bpCss;
       this.h5bpJs        = props.h5bpJs;
       this.h5bpIco       = props.h5bpIco;
-//      this.h5bpDocs      = props.h5bpDocs;
+      this.h5bpDocs      = props.h5bpDocs;
       this.h5bpAnalytics = props.h5bpAnalytics;
 
       cb();
     }.bind(this));
   }
   else {
-//    this.h5bpCss       = false;
+    this.h5bpCss       = false;
     this.h5bpJs        = false;
     this.h5bpIco       = false;
-//    this.h5bpDocs      = false;
+    this.h5bpDocs      = false;
     this.h5bpAnalytics = false;
   }
 };
