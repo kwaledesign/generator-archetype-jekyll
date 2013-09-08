@@ -127,7 +127,7 @@ ArchetypeJekyllGenerator.prototype.askForStructure = function askForStructure() 
   {
     name: 'imgDir',
     message: 'Image directory',
-    default: 'img',
+    default: 'images',
     filter: slashFilter
   },
   {
@@ -135,13 +135,13 @@ ArchetypeJekyllGenerator.prototype.askForStructure = function askForStructure() 
     message: 'Webfont directory',
     default: 'fonts',
     filter: slashFilter
-  }];
-  var cssPreDirPrompt = {
+  },
+  {
     name: 'cssPreDir',
     message: 'CSS preprocessor directory',
-    default: '_scss',
+    default: 'sass',
     filter: slashFilter
-  };
+  }];
 
 
   this.prompt(prompts, function (props) {
@@ -334,12 +334,13 @@ ArchetypeJekyllGenerator.prototype.templates = function templates() {
   var date = new Date();
   var formattedDate = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
 
-  // Scaffold Jekyll dirs
+  // Scaffold App directories
   this.mkdir('app/_layouts');
   this.mkdir('app/_posts');
   this.mkdir('app/_includes');
   this.mkdir('app/_plugins');
   this.mkdir(path.join('app', this.cssDir));
+  this.mkdir(path.join('app', this.cssPreDir));
   this.mkdir(path.join('app', this.jsDir));
   this.mkdir(path.join('app', this.imgDir));
   this.mkdir(path.join('app', this.fontsDir));
@@ -443,7 +444,6 @@ ArchetypeJekyllGenerator.prototype.pygments = function pygments() {
   }
 };
 
-
 ArchetypeJekyllGenerator.prototype.archetype = function app() { 
   var cb = this.async();
 
@@ -456,9 +456,9 @@ ArchetypeJekyllGenerator.prototype.archetype = function app() {
     // Get config.rb file from templates/ 
     // (not done remotely to allow lo-dash template for directory names)
     this.template('_config.rb', 'app/config.rb');
-/*
+
     // Archetype screen.scss
-    remote.template('sass/screen.scss', path.join('app', this.cssPreDir, 'screen.scss')); 
+    remote.template('sass/screen.scss', path.join('app', this.cssPreDir, 'screen.scss'));  
 
     // Archetype Base
     remote.directory('sass/base/', path.join('app', this.cssPreDir, 'base')); 
@@ -473,9 +473,8 @@ ArchetypeJekyllGenerator.prototype.archetype = function app() {
 
     // Archetype Docs (Styleguide and Pattern Library powered by Dexy)
     remote.directory('docs', 'app/docs');
-*/
+
     cb(); 
   }.bind(this));
 };
-
 

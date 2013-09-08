@@ -1,15 +1,9 @@
 {
   "name": "<%= _.slugify(appname) %>",
   "version": "0.0.0",
-  "dependencies": {<%
-    var depn = [];
-    if (h5bpJs) {
-      depn.push('\n    "jquery": "~1.10.2"');
-      depn.push('\n    "modernizr": "~2.6.2"');
-    }
-    print(depn.join(','));
-  %>
+  "dependencies": {
+    "jquery": "~2.0.0",
+    "modernizr": "~2.6.2",
+    "hammerjs": "~1.0.5"
   }
 }
-
-
