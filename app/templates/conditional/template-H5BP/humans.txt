@@ -11,11 +11,8 @@
 
 # TECHNOLOGY COLOPHON
 
-    Jekyll static site generator<% if (cssPre === 'sass') { %>
-    Sass <% } %><% if (cssPre === 'compass') { %>
-    Sass and Compass <% } %><% if (jsPre === 'coffeescript') { %>
-    Coffeescript <% } %><% if (templateType === 'h5bp') { %>
-    HTML5 ★ Boilerplate <% } %><% if (h5bpCss) { %>
-    Normalize.css <% } %><% if (h5bpJs) { %>
+    Jekyll static site generator
+    Sass and Compass <% if (templateType === 'h5bp') { %>
+    HTML5 ★ Boilerplate <% } %><% if (h5bpJs) { %>
     jQuery, Modernizr <% } %>
 

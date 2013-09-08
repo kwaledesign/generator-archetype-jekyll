@@ -10,10 +10,8 @@ You now have
 
 - Jekyll<% if (templateType === 'h5bp') { %>
 - Html5 Boilerplate based templates<% } %><% if (h5bpJs) { %>
-- jQuery and Modernizr<% } %><% if (cssPre === 'sass') { %>
-- Sass<% } %><% if (cssPre === 'compass') { %>
-- Sass and Compass<% } %><% if (jsPre === 'coffeescript') { %>
-- Coffeescript tools<% } %>
+- jQuery and Modernizr<% } %>
+- Sass and Compass and Archetype
 - <%= jekMkd %> markdown parser<% if (jekPyg) { %> and Pygments highlighter<% } %>
 
 installed.

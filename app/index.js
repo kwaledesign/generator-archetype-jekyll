@@ -143,9 +143,6 @@ ArchetypeJekyllGenerator.prototype.askForStructure = function askForStructure() 
     filter: slashFilter
   };
 
-  if (this.cssPre) {
-    prompts.push(cssPreDirPrompt);
-  }
 
   this.prompt(prompts, function (props) {
 
@@ -189,11 +186,6 @@ ArchetypeJekyllGenerator.prototype.askForh5bp = function askForh5bp() {
     var cb = this.async();
 
     var prompts = [{
-      name: 'h5bpCss',
-      type: 'confirm',
-      message: 'Add H5★BP CSS files?'
-    },
-    {
       name: 'h5bpJs',
       type: 'confirm',
       message: 'Add H5★BP javascript files?',
@@ -405,13 +397,13 @@ ArchetypeJekyllGenerator.prototype.templates = function templates() {
       remote.copy('robots.txt', 'app/robots.txt');
 
       // CSS boilerplate
-      if (this.h5bpCss) {
+    /*  if (this.h5bpCss) {
         remote.copy('css/main.css', path.join('app', this.cssDir, 'main.css'));
       }
-      else {
+      else {*/
         // Empty file
         this.write(path.join('app', this.cssDir, 'main.css'), '');
-      }
+     /* }*/
 
       // Js boilerplate
       // Vendor javascript is handled by Bower
@@ -449,40 +441,10 @@ ArchetypeJekyllGenerator.prototype.pygments = function pygments() {
   if (this.jekPyg) {
     this.copy(path.join(this.jekTmpDir, 'css/syntax.css'), path.join('app', this.cssDir, 'syntax.css'));
   }
-}
-
-ArchetypeJekyllGenerator.prototype.cssPreprocessor = function cssPreprocessor() {
-  if (this.cssPre) {
-    this.mkdir(path.join('app', this.cssPreDir));
-  }
-
-  // Sass and Compass
-  if (['sass', 'compass'].indexOf(this.cssPre) !== -1) {
-
-    this.template('conditional/sass-compass/readme.md', path.join('app', this.cssPreDir, 'readme.md'));
-
-    // Copy CSS files to SCSS
-    var files = globule.find('**/*.css', {srcBase: path.join('app', this.cssDir)});
-    var cssDir = this.cssDir;
-    var cssDir = this.cssDir;
-
-    files.forEach(function (file) {
-
-      this.copy(path.join(process.cwd(), 'app', cssDir, file),
-                path.join('app', this.cssPreDir, file.replace(/\.css$/, '.scss')));
-
-      // Wait until copy is completely finished and then delete files.
-      this.conflicter.resolve(function (err) {
-        if (err) {
-          return this.emit('error', err);
-        }
-        spawn('rm', [path.join('app', cssDir, file)], { stdio: 'inherit' });
-      });
-    }, this);
-  }
 };
 
-ArchetypeGenerator.prototype.archetype = function app() { 
+
+ArchetypeJekyllGenerator.prototype.archetype = function app() { 
   var cb = this.async();
 
   // Get Archetype and provide a "remote" object as a facade API
@@ -494,7 +456,7 @@ ArchetypeGenerator.prototype.archetype = function app() {
     // Get config.rb file from templates/ 
     // (not done remotely to allow lo-dash template for directory names)
     this.template('_config.rb', 'app/config.rb');
-
+/*
     // Archetype screen.scss
     remote.template('sass/screen.scss', path.join('app', this.cssPreDir, 'screen.scss')); 
 
@@ -511,7 +473,7 @@ ArchetypeGenerator.prototype.archetype = function app() {
 
     // Archetype Docs (Styleguide and Pattern Library powered by Dexy)
     remote.directory('docs', 'app/docs');
-
+*/
     cb(); 
   }.bind(this));
 };

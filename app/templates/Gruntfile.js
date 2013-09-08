@@ -27,13 +27,14 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     yeoman: yeomanConfig,
-    watch: {<% if (cssPre) { %>
-      <%= cssPre %>: {
+    watch: {
+      compass: {
         files: ['<%%= yeoman.app %>/<%= cssPreDir %>/**/*.{scss,sass}'],
-        tasks: ['<%= cssPre %>:server']
-      prefixCss: {
-        files: ['<%%= yeoman.app %>/<%= cssDir %>/**/*.css'],
-        tasks: ['copy:stageCss']
+        tasks: ['compass:server']
+     // prefixCss: {
+      //  files: ['<%%= yeoman.app %>/<%= cssDir %>/**/*.css'],
+       // tasks: ['copy:stageCss']
+       // }
       },
      jekyll: {
         files: [
