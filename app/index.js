@@ -208,7 +208,7 @@ ArchetypeJekyllGenerator.prototype.askForh5bp = function askForh5bp() {
 
     this.prompt(prompts, function (props) {
 
-      this.h5bpCss       = props.h5bpCss;
+      //this.h5bpCss       = props.h5bpCss;
       this.h5bpJs        = props.h5bpJs;
       this.h5bpIco       = props.h5bpIco;
       this.h5bpDocs      = props.h5bpDocs;
@@ -218,7 +218,7 @@ ArchetypeJekyllGenerator.prototype.askForh5bp = function askForh5bp() {
     }.bind(this));
   }
   else {
-    this.h5bpCss       = false;
+    //this.h5bpCss       = false;
     this.h5bpJs        = false;
     this.h5bpIco       = false;
     this.h5bpDocs      = false;
@@ -359,7 +359,7 @@ ArchetypeJekyllGenerator.prototype.templates = function templates() {
     // Default Jekyll files
     this.copy(path.join(this.jekTmpDir, 'index.html'), 'app/index.html');
     this.copy(path.join(this.jekTmpDir, '_layouts/post.html'), 'app/_layouts/post.html');
-    this.copy(path.join(this.jekTmpDir, 'css/main.css'), path.join('app', this.cssDir, 'main.css'));
+    //this.copy(path.join(this.jekTmpDir, 'css/main.css'), path.join('app', this.cssDir, 'main.css'));
 
     // Jekyll files tailored for Yeoman
     this.template('conditional/template-default/_layouts/default.html', 'app/_layouts/default.html');
@@ -403,7 +403,7 @@ ArchetypeJekyllGenerator.prototype.templates = function templates() {
       }
       else {*/
         // Empty file
-        this.write(path.join('app', this.cssDir, 'main.css'), '');
+        //this.write(path.join('app', this.cssDir, 'main.css'), '');
      /* }*/
 
       // Js boilerplate
