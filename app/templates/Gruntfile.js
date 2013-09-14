@@ -67,7 +67,7 @@ module.exports = function (grunt) {
           middleware: function (connect) {
             return [
               lrSnippet,
-//              mountFolder(connect, '.tmp'),
+              mountFolder(connect, '.tmp'),
 //              mountFolder(connect, 'app/css'),
               mountFolder(connect, '.jekyll'),
               mountFolder(connect, yeomanConfig.app)
@@ -88,7 +88,7 @@ module.exports = function (grunt) {
         options: {
           middleware: function (connect) {
             return [
-//              mountFolder(connect, '.tmp'),
+              mountFolder(connect, '.tmp'),
               mountFolder(connect, 'test'),
               mountFolder(connect, yeomanConfig.app)
             ];
@@ -120,11 +120,11 @@ module.exports = function (grunt) {
     compass: {
       options: {
         // If you're using global Sass gems, require them here.
-        // require: ['singularity', 'jacket'],
+        require: ['archetype-utilities', 'colorkit', 'modular-scale', 'breakpoint'],
         bundleExec: true,
         sassDir: '<%%= yeoman.app %>/<%= cssPreDir %>',
-//        cssDir: '.tmp/<%= cssDir %>',
-        cssDir: '<%%= yeoman.app %>/<%= cssDir %>',
+        cssDir: '.tmp/<%= cssDir %>',
+//        cssDir: '<%%= yeoman.app %>/<%= cssDir %>',
         imagesDir: '<%%= yeoman.app %>/<%= imgDir %>',
         javascriptsDir: '<%%= yeoman.app %>/<%= jsDir %>',
         relativeAssets: false,
