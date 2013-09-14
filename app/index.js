@@ -478,3 +478,27 @@ ArchetypeJekyllGenerator.prototype.archetype = function app() {
   }.bind(this));
 };
 
+ArchetypeJekyllGenerator.prototype.styledocs = function app() { 
+  var cb = this.async();
+
+  // Get Archetype and provide a "remote" object as a facade API
+  this.remote('kwaledesign', 'Style-Docs', function(err, remote) {
+    if (err) {
+      return cb(err);
+    }
+    
+    // Get config.rb file from templates/ 
+    // (not done remotely to allow lo-dash template for directory names)
+    // this.template('_config.rb', 'app/config.rb');
+
+    // Archetype screen.scss
+    // remote.template('sass/screen.scss', path.join('app', this.cssPreDir, 'screen.scss'));  
+
+    // Archetype Base
+    // remote.directory('sass/base/', path.join('app', this.cssPreDir, 'base')); 
+
+    cb(); 
+  }.bind(this));
+};
+
+
