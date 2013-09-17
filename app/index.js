@@ -478,45 +478,7 @@ ArchetypeJekyllGenerator.prototype.archetype = function app() {
   }.bind(this));
 };
 
-ArchetypeJekyllGenerator.prototype.styledocs = function app() { 
-  var cb = this.async();
-
-  // Get Archetype and provide a "remote" object as a facade API
-  this.remote('kwaledesign', 'Style-Docs', function(err, remote) {
-    if (err) {
-      return cb(err);
-    }
-
-    // Style-Docs Template Files (Jekyll Pages)
-//    remote.copy('brandguidelines.html', 'app/brandguidelines.html');
-//    remote.copy('templates/cuti.html', 'app/cuti.html');
-//    remote.copy('grid.html', 'app/grid.html');
-//    remote.copy('performance.html', 'app/performance.html');
-//    remote.copy('prototype.html', 'app/prototype.html');
-//    remote.copy('specification.html', 'app/specification.html');
-//    remote.copy('structured-content.html', 'app/structured-content.html');
-//    remote.copy('styletile.html', 'app/styletile.html');
-//    remote.copy('content-reference-wireframe.html', 'app/content-reference-wireframe.html');
-
-    // Style-Docs _includes/
-//    remote.directory('_includes/markup', path.join('app/_includes/markup', '_includes', 'markup'));
-//    remote.directory('_includes/markdown', path.join('app/_includes/markdown', '_includes', 'markdown'));
-
-    // Style-Docs Sass Files
-//    remote.template('sass/style-docs.scss', 'app/sass/style-docs.scss');
-//   remote.directory('sass/style-docs', path.join('app/sass/style-docs', this.cssPreDir, 'style-docs'));
-
-    // Style-Docs JavaScript Files
-//    remote.template('js/annotation.js', 'app/js/annotation.js');
-//    remote.template('js/performance.js', 'app/js/performance.js');
-//    remote.template('js/screenshots.js', 'app/js/sreenshots.js');
-
-
-    cb(); 
-  }.bind(this));
-};
-
-ArchetypeJekyllGenerator.prototype.test = function templates() {
+ArchetypeJekyllGenerator.prototype.styledocs = function templates() {
   var cb = this.async();
  
   // Get Style-Docs and provide a "remote" object as a facade API
@@ -525,8 +487,6 @@ ArchetypeJekyllGenerator.prototype.test = function templates() {
       return cb(err);
     }
 
-    // Always include files
-    remote.copy('templates/cuti.html', 'app/cuti.html');
 
     // Style-Docs Template Files (Jekyll Pages)
     remote.copy('templates/brandguidelines.html', 'app/brandguidelines.html');
@@ -538,7 +498,23 @@ ArchetypeJekyllGenerator.prototype.test = function templates() {
     remote.copy('templates/structured-content.html', 'app/structured-content.html');
     remote.copy('templates/styletile.html', 'app/styletile.html');
     remote.copy('templates/content-reference-wireframe.html', 'app/content-reference-wireframe.html');
+    remote.copy('templates/about.html', 'app/about.html');
 
+    // Style-Docs _includes Directories
+    remote.directory('_includes/markup', path.join('app/_includes', '_includes', 'markup'));
+    remote.directory('_includes/markdown', path.join('app/_includes', '_includes', 'markdown'));
+
+    // Grab README.md file and convert to about.md
+    remote.cpy('README.md', 'app/_includes/markdown/about.md');
+
+    // Style-Docs Sass Files
+    remote.template('sass/style-docs.scss', 'app/sass/style-docs.scss');
+    remote.directory('sass/style-docs', path.join('app/sass/style-docs', this.cssPreDir, 'style-docs'));
+
+    // Style-Docs JavaScript Files
+    remote.template('js/annotation.js', 'app/js/annotation.js');
+    remote.template('js/performance.js', 'app/js/performance.js');
+    remote.template('js/screenshots.js', 'app/js/sreenshots.js');
 
     cb();
   }.bind(this));
