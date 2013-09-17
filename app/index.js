@@ -508,8 +508,8 @@ ArchetypeJekyllGenerator.prototype.styledocs = function templates() {
     remote.copy('README.md', 'app/_includes/markdown/about.md');
 
     // Style-Docs Sass Files
-//    remote.template('sass/style-docs.scss', 'app/sass/style-docs.scss');
-//    remote.directory('sass/style-docs', path.join('app/sass/style-docs', this.cssPreDir, 'style-docs'));
+    remote.template('sass/style-docs.scss', 'app/sass/style-docs.scss');
+    remote.directory('sass/style-docs', 'app/sass/style-docs');
 
     // Style-Docs JavaScript Files
     remote.template('js/annotation.js', 'app/js/annotation.js');
