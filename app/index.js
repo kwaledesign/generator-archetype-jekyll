@@ -486,19 +486,61 @@ ArchetypeJekyllGenerator.prototype.styledocs = function app() {
     if (err) {
       return cb(err);
     }
-    
-    // Get config.rb file from templates/ 
-    // (not done remotely to allow lo-dash template for directory names)
-    // this.template('_config.rb', 'app/config.rb');
 
-    // Archetype screen.scss
-    // remote.template('sass/screen.scss', path.join('app', this.cssPreDir, 'screen.scss'));  
+    // Style-Docs Template Files (Jekyll Pages)
+//    remote.copy('brandguidelines.html', 'app/brandguidelines.html');
+//    remote.copy('templates/cuti.html', 'app/cuti.html');
+//    remote.copy('grid.html', 'app/grid.html');
+//    remote.copy('performance.html', 'app/performance.html');
+//    remote.copy('prototype.html', 'app/prototype.html');
+//    remote.copy('specification.html', 'app/specification.html');
+//    remote.copy('structured-content.html', 'app/structured-content.html');
+//    remote.copy('styletile.html', 'app/styletile.html');
+//    remote.copy('content-reference-wireframe.html', 'app/content-reference-wireframe.html');
 
-    // Archetype Base
-    // remote.directory('sass/base/', path.join('app', this.cssPreDir, 'base')); 
+    // Style-Docs _includes/
+//    remote.directory('_includes/markup', path.join('app/_includes/markup', '_includes', 'markup'));
+//    remote.directory('_includes/markdown', path.join('app/_includes/markdown', '_includes', 'markdown'));
+
+    // Style-Docs Sass Files
+//    remote.template('sass/style-docs.scss', 'app/sass/style-docs.scss');
+//   remote.directory('sass/style-docs', path.join('app/sass/style-docs', this.cssPreDir, 'style-docs'));
+
+    // Style-Docs JavaScript Files
+//    remote.template('js/annotation.js', 'app/js/annotation.js');
+//    remote.template('js/performance.js', 'app/js/performance.js');
+//    remote.template('js/screenshots.js', 'app/js/sreenshots.js');
+
 
     cb(); 
   }.bind(this));
 };
 
+ArchetypeJekyllGenerator.prototype.test = function templates() {
+  var cb = this.async();
+ 
+  // Get Style-Docs and provide a "remote" object as a facade API
+  this.remote('kwaledesign', 'Style-Docs', '1.0.0', function (err, remote) {
+    if (err) {
+      return cb(err);
+    }
+
+    // Always include files
+    remote.copy('templates/cuti.html', 'app/cuti.html');
+
+    // Style-Docs Template Files (Jekyll Pages)
+    remote.copy('templates/brandguidelines.html', 'app/brandguidelines.html');
+    remote.copy('templates/cuti.html', 'app/cuti.html');
+    remote.copy('templates/grid.html', 'app/grid.html');
+    remote.copy('templates/performance.html', 'app/performance.html');
+    remote.copy('templates/prototype.html', 'app/prototype.html');
+    remote.copy('templates/specification.html', 'app/specification.html');
+    remote.copy('templates/structured-content.html', 'app/structured-content.html');
+    remote.copy('templates/styletile.html', 'app/styletile.html');
+    remote.copy('templates/content-reference-wireframe.html', 'app/content-reference-wireframe.html');
+
+
+    cb();
+  }.bind(this));
+};
 
