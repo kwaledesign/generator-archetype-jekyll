@@ -505,7 +505,7 @@ ArchetypeJekyllGenerator.prototype.styledocs = function templates() {
     remote.directory('_includes/markdown', path.join('app/_includes', '_includes', 'markdown'));
 
     // Grab README.md file and convert to about.md
-    remote.cpy('README.md', 'app/_includes/markdown/about.md');
+    remote.copy('README.md', 'app/_includes/markdown/about.md');
 
     // Style-Docs Sass Files
     remote.template('sass/style-docs.scss', 'app/sass/style-docs.scss');
