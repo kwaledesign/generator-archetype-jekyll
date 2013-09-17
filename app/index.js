@@ -482,7 +482,7 @@ ArchetypeJekyllGenerator.prototype.styledocs = function templates() {
   var cb = this.async();
  
   // Get Style-Docs and provide a "remote" object as a facade API
-  this.remote('kwaledesign', 'Style-Docs', '1.0.1', function (err, remote) {
+  this.remote('kwaledesign', 'Style-Docs', '1.0.2', function (err, remote) {
     if (err) {
       return cb(err);
     }
@@ -501,15 +501,15 @@ ArchetypeJekyllGenerator.prototype.styledocs = function templates() {
     remote.copy('templates/about.html', 'app/about.html');
 
     // Style-Docs _includes Directories
-    remote.directory('_includes/markup', path.join('app/_includes', '_includes', 'markup'));
-    remote.directory('_includes/markdown', path.join('app/_includes', '_includes', 'markdown'));
+    remote.directory('_includes/markup', path.join('app/_includes', 'markup'));
+    remote.directory('_includes/markdown', path.join('app/_includes', 'markdown'));
 
     // Grab README.md file and convert to about.md
     remote.copy('README.md', 'app/_includes/markdown/about.md');
 
     // Style-Docs Sass Files
-    remote.template('sass/style-docs.scss', 'app/sass/style-docs.scss');
-    remote.directory('sass/style-docs', path.join('app/sass/style-docs', this.cssPreDir, 'style-docs'));
+//    remote.template('sass/style-docs.scss', 'app/sass/style-docs.scss');
+//    remote.directory('sass/style-docs', path.join('app/sass/style-docs', this.cssPreDir, 'style-docs'));
 
     // Style-Docs JavaScript Files
     remote.template('js/annotation.js', 'app/js/annotation.js');
