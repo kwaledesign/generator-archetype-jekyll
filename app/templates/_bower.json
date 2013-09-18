@@ -1,9 +1,16 @@
 {
   "name": "<%= _.slugify(appname) %>",
   "version": "0.0.0",
-  "dependencies": {
-    "jquery": "~2.0.0",
-    "modernizr": "~2.6.2",
-    "hammerjs": "~1.0.5"
+  "dependencies": {<%
+    var depn = [];
+      depn.push('\n     "jquery": "~2.0.0"');
+      depn.push('\n     "modernizr": "~2.6.2"');
+      depn.push('\n     "hammerjs": "~1.0.5"');
+    if (styleDocs) {
+      depn.push('\n     "handsontable": "~0.9.17"');
+      depn.push('\n     "Chart.js": ""');
+    }
+    print(depn.join(','));
+  %>
   }
 }
