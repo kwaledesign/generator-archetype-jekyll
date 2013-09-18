@@ -6,14 +6,15 @@
         <title>{{ page.title }}</title>
         <meta name="viewport" content="width=device-width">
 
-        <!-- build:css
-        /<%= cssDir %>/screen.css --><% if (jekPyg) { %>
-        <!-- Syntax highlighting CSS -->
-        <link rel="stylesheet" href="/<%= cssDir %>/syntax.css">
-<% } %>
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="/<%= cssDir %>/screen.css">
-        <!-- endbuild -->
+    <!-- build:css
+    /<%= cssDir %>/screen.css -->
+    <% if (jekPyg) { %>
+    <link rel="stylesheet" href="/<%= cssDir %>/syntax.css"><% } %>
+    <link rel="stylesheet" href="/<%= cssDir %>/screen.css">
+    <% if (styleDocs) { %>
+    <!-- Style-Docs CSS -->
+    <link rel="stylesheet" href="/<%= cssDir %>/style-docs.css"><% } %>
+    <!-- endbuild -->
 
     </head>
     <body>

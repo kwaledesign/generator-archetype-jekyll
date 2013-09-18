@@ -17,6 +17,9 @@
     <% if (jekPyg) { %>
     <link rel="stylesheet" href="/<%= cssDir %>/syntax.css"><% } %>
     <link rel="stylesheet" href="/<%= cssDir %>/screen.css">
+    <% if (styleDocs) { %>
+    <!-- Style-Docs CSS -->
+    <link rel="stylesheet" href="/<%= cssDir %>/style-docs.css"><% } %>
     <!-- endbuild --><% if (h5bpJs) { %>
 
     <!-- build:js
@@ -24,6 +27,7 @@
     <!-- Replace with a custom modernizer build for production -->
     <script src="/bower_components/modernizr/modernizr.js"></script><% } %>
     <!-- endbuild -->
+    
 
   </head>
   <body>
