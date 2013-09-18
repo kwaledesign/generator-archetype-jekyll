@@ -205,6 +205,23 @@ ArchetypeJekyllGenerator.prototype.askForh5bp = function askForh5bp() {
   }
 };
 
+ArchetypeJekyllGenerator.prototype.askForStyleDocs = function askForh5bp() {
+  var cb = this.async();
+
+  var prompts = [{
+    name: 'styleDocs',
+    type: 'confirm',
+    message: 'Is this a StyleDocs site (include responsive deliverables)?',
+  }];
+
+  this.prompt(prompts, function (props) {
+
+    this.styleDocs = props.styleDocs;
+
+    cb();
+  }.bind(this));
+};
+
 ArchetypeJekyllGenerator.prototype.askForJekyll = function askForJekyll() {
   var cb = this.async();
 
@@ -457,45 +474,46 @@ ArchetypeJekyllGenerator.prototype.archetype = function app() {
   }.bind(this));
 };
 
-ArchetypeJekyllGenerator.prototype.styledocs = function templates() {
-  var cb = this.async();
- 
-  // Get Style-Docs and provide a "remote" object as a facade API
-  this.remote('kwaledesign', 'Style-Docs', '1.0.2', function (err, remote) {
-    if (err) {
-      return cb(err);
-    }
+ArchetypeJekyllGenerator.prototype.styledocs = function templates() { 
+  if (this.styleDocs) {
+    var cb = this.async();
+   
+    // Get Style-Docs and provide a "remote" object as a facade API
+    this.remote('kwaledesign', 'Style-Docs', '1.0.2', function (err, remote) {
+      if (err) {
+        return cb(err);
+      }
 
+      // Style-Docs Template Files (Jekyll Pages)
+      remote.copy('templates/brandguidelines.html', 'app/brandguidelines.html');
+      remote.copy('templates/cuti.html', 'app/cuti.html');
+      remote.copy('templates/grid.html', 'app/grid.html');
+      remote.copy('templates/performance.html', 'app/performance.html');
+      remote.copy('templates/prototype.html', 'app/prototype.html');
+      remote.copy('templates/specification.html', 'app/specification.html');
+      remote.copy('templates/structured-content.html', 'app/structured-content.html');
+      remote.copy('templates/styletile.html', 'app/styletile.html');
+      remote.copy('templates/content-reference-wireframe.html', 'app/content-reference-wireframe.html');
+      remote.copy('templates/about.html', 'app/about.html');
 
-    // Style-Docs Template Files (Jekyll Pages)
-    remote.copy('templates/brandguidelines.html', 'app/brandguidelines.html');
-    remote.copy('templates/cuti.html', 'app/cuti.html');
-    remote.copy('templates/grid.html', 'app/grid.html');
-    remote.copy('templates/performance.html', 'app/performance.html');
-    remote.copy('templates/prototype.html', 'app/prototype.html');
-    remote.copy('templates/specification.html', 'app/specification.html');
-    remote.copy('templates/structured-content.html', 'app/structured-content.html');
-    remote.copy('templates/styletile.html', 'app/styletile.html');
-    remote.copy('templates/content-reference-wireframe.html', 'app/content-reference-wireframe.html');
-    remote.copy('templates/about.html', 'app/about.html');
+      // Style-Docs _includes Directories
+      remote.directory('_includes/markup', path.join('app/_includes', 'markup'));
+      remote.directory('_includes/markdown', path.join('app/_includes', 'markdown'));
 
-    // Style-Docs _includes Directories
-    remote.directory('_includes/markup', path.join('app/_includes', 'markup'));
-    remote.directory('_includes/markdown', path.join('app/_includes', 'markdown'));
+      // Grab README.md file and convert to about.md
+      remote.copy('README.md', 'app/_includes/markdown/about.md');
 
-    // Grab README.md file and convert to about.md
-    remote.copy('README.md', 'app/_includes/markdown/about.md');
+      // Style-Docs Sass Files
+      remote.template('sass/style-docs.scss', 'app/sass/style-docs.scss');
+      remote.directory('sass/style-docs', 'app/sass/style-docs');
 
-    // Style-Docs Sass Files
-    remote.template('sass/style-docs.scss', 'app/sass/style-docs.scss');
-    remote.directory('sass/style-docs', 'app/sass/style-docs');
+      // Style-Docs JavaScript Files
+      remote.template('js/annotation.js', 'app/js/annotation.js');
+      remote.template('js/performance.js', 'app/js/performance.js');
+      remote.template('js/screenshots.js', 'app/js/sreenshots.js');
 
-    // Style-Docs JavaScript Files
-    remote.template('js/annotation.js', 'app/js/annotation.js');
-    remote.template('js/performance.js', 'app/js/performance.js');
-    remote.template('js/screenshots.js', 'app/js/sreenshots.js');
-
-    cb();
-  }.bind(this));
+      cb();
+    }.bind(this));
+  }
 };
 
