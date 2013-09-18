@@ -81,27 +81,6 @@ ArchetypeJekyllGenerator.prototype.askForUser = function askForUser() {
   }.bind(this));
 };
 
-/*ArchetypeJekyllGenerator.prototype.askForTools = function askForTools() {
-  var cb = this.async();
-
-  console.log(chalk.yellow('\nWire tools and preprocessors.') + ' ☛');
-
-  var prompts = [{
-    name: 'cssPre',
-    type: 'list',
-    message: 'CSS preprocessor',
-    choices: ['None', 'Sass', 'Compass']
-  }];
-
-  this.prompt(prompts, function (props) {
-
-    // Multiple choice 'None' to false
-    this.cssPre  = props.cssPre === 'None' ? false : props.cssPre.toLowerCase();
-
-    cb();
-  }.bind(this));
-};*/
-
 ArchetypeJekyllGenerator.prototype.askForStructure = function askForStructure() {
   var cb = this.async();
 
