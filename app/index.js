@@ -452,10 +452,7 @@ ArchetypeJekyllGenerator.prototype.archetype = function app() {
     // Get config.rb file from templates/ 
     // (not done remotely to allow lo-dash template for directory names)
     this.template('_config.rb', 'app/config.rb');
-
-    // Archetype screen.scss
-    remote.template('sass/screen.scss', path.join('app', this.cssPreDir, 'screen.scss'));  
-
+ 
     // Archetype Base
     remote.directory('sass/base/', path.join('app', this.cssPreDir, 'base')); 
     // Archetype Objects  
@@ -469,6 +466,11 @@ ArchetypeJekyllGenerator.prototype.archetype = function app() {
 
     // Archetype Docs (Styleguide and Pattern Library powered by Dexy)
     remote.directory('docs', 'app/docs');
+
+    // Archetype screen.scss
+    if (!this.styleDocs) {
+      remote.template('sass/screen.scss', path.join('app', this.cssPreDir, 'screen.scss'));  
+    }
 
     cb(); 
   }.bind(this));
@@ -504,8 +506,11 @@ ArchetypeJekyllGenerator.prototype.styledocs = function templates() {
       remote.copy('README.md', 'app/_includes/markdown/about.md');
 
       // Style-Docs Sass Files
-      remote.template('sass/style-docs.scss', 'app/sass/style-docs.scss');
+      //remote.template('sass/style-docs.scss', 'app/sass/style-docs.scss');
       remote.directory('sass/style-docs', 'app/sass/style-docs');
+
+      // pulled from templates dir rather than repo to allow lo-dash
+      this.template('_screen.scss', 'app/sass/screen.scss');
 
       // Style-Docs JavaScript Files
       remote.template('js/annotation.js', 'app/js/annotation.js');

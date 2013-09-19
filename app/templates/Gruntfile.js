@@ -120,7 +120,7 @@ module.exports = function (grunt) {
     compass: {
       options: {
         // If you're using global Sass gems, require them here.
-        require: ['archetype-utilities', 'colorkit', 'modular-scale', 'breakpoint'],
+        require: ['archetype-utilities', 'colorkit', 'modular-scale', 'breakpoint', 'singularitygs', 'singularity-extras', 'susy'],
         bundleExec: true,
         sassDir: '<%%= yeoman.app %>/<%= cssPreDir %>',
         cssDir: '.tmp/<%= cssDir %>',
