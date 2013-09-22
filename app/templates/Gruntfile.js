@@ -288,7 +288,9 @@ module.exports = function (grunt) {
             '!**/_*/**',
             '!**/_*'<% if (h5bpJs) { %>,<% } %>
             // Explicitly add other files your site needs for distribution here
-            <% if (!h5bpJs) { %>// <% } %>'bower_components/jquery.min.js'
+            <% if (!h5bpJs) { %>// <% } %>'bower_components/jquery.min.js'<% if (styleDocs) { %>,<% } %>
+            <% if (styleDocs) { %>'bower_components/handsontable/dist/jquery.handsontable.js',
+            'bower_components/Chart.js/Chart.js'<% } %>
           ],
           dest: '<%%= yeoman.dist %>'
         }]
