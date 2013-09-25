@@ -6,16 +6,12 @@
         <title>{{ page.title }}</title>
         <meta name="viewport" content="width=device-width">
 
-    <!-- build:css
-    /<%= cssDir %>/screen.css -->
+    <!-- build:css({app,.tmp}) /<%= cssDir %>/screen.css -->
     <% if (jekPyg) { %>
     <link rel="stylesheet" href="/<%= cssDir %>/syntax.css"><% } %>
     <link rel="stylesheet" href="/<%= cssDir %>/screen.css">
-    <% if (styleDocs) { %>
-    <!-- Style-Docs CSS -->
-    <link rel="stylesheet" href="/<%= cssDir %>/style-docs.css"><% } %>
-    <!-- endbuild -->
-
+    <!-- endbuild --><% if (h5bpJs) { %>
+   
     </head>
     <body>
 
@@ -45,8 +41,7 @@
           </div>
         </div> <!-- /container -->
 
-        <!-- build:js
-         /<%= jsDir %>/scripts.js -->
+    <!-- build:js /<%= jsDir %>/scripts.js -->
     <script src="/<%= jsDir %>/main.js"></script>
     <!-- endbuild -->
     </body>

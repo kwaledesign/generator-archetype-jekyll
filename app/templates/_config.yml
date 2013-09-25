@@ -18,7 +18,7 @@ author:
 # Grunt moves image files and asset directories.
 exclude: ['<%= imgDir %>', '<%= cssDir %>', '<%= jsDir %>', '<%= fontsDir %>',
           '**.png', '**.jpg', '**.jpeg', '**.gif', '**.webp', '**.svg', '**.ico', 'docs',
-          'bower_components']
+          'bower_components', '<%= cssPreDir %>']
 
 # Force inclusion of directories and/or files in the conversion.
 # .htaccess is a good example since dotfiles are excluded by default.
