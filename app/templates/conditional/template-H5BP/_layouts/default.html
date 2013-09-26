@@ -29,6 +29,34 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+    <% if (styleDocs) { %>
+    <div class="header">
+      <a href="#0">Nav</a>
+      <h1 class="">Style-Docs</h1>
+      <a href="#0">Annotations</a>
+    </div>
+
+    <nav class="nav-slider is-active">
+      <ul class="nav nav__vertical nav-styledocs--structure nav-styledocs--skin">
+        <li><a href="#0">Specification</a></li>
+        <li><a href="#0">Branding Guidelines</a></li>
+        <li><a href="#0">CUTI Report</a></li>
+        <li><a href="#0">Content Inventory</a></li>
+        <li><a href="#0">Performance Budget</a></li>
+        <li><a href="#0">Structured Content Types</a></li>
+        <li><a href="#0">Content Reference Wireframe</a></li>
+        <li><a href="#0">Style Tile</a></li>
+        <li><a href="#0">Grid</a></li>
+        <li><a href="#0">Wireframe</a></li>
+        <li><a href="#0">Prototype</a></li>
+      </ul>
+    </nav>
+
+    <section class="annotation-slider is-active">
+      this is the annotation slider...write notes here and link them to sections of the document
+    </section>
+    <% } %>
+
     {{ content }}
 
     {% include scripts.html %}<% if (h5bpAnalytics) { %>
