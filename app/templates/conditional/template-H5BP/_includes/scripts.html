@@ -3,5 +3,11 @@
 <script>window.jQuery || document.write('<script src="/bower_components/jquery/jquery.min.js"><\/script>')</script><% } %>
 <!-- build:js /<%= jsDir %>/script.js --><% if (h5bpJs) { %>
 <script src="/<%= jsDir %>/plugins.js"></script><% } %>
+<% if (styleDocs) { %>
+<script src="/bower_components/handsontable/dist/jquery.handsontable.js"></script>
+<script src="/bower_components/Chart.js/Chart.js"></script>
+<script src="/js/annotation.js"></script>
+<script src="/js/performance.js"></script>
+<script src="/js/screenshots.js"></script><% } %>
 <script src="/<%= jsDir %>/main.js"></script>
 <!-- endbuild -->
