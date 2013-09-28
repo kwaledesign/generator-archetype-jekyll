@@ -516,6 +516,7 @@ ArchetypeJekyllGenerator.prototype.styledocs = function templates() {
       remote.template('js/annotation.js', 'app/js/annotation.js');
       remote.template('js/performance.js', 'app/js/performance.js');
       remote.template('js/screenshots.js', 'app/js/sreenshots.js');
+      remote.template('js/navigation.js', 'app/js/navigation.js');
 
       cb();
     }.bind(this));
