@@ -481,7 +481,7 @@ ArchetypeJekyllGenerator.prototype.styledocs = function templates() {
     var cb = this.async();
    
     // Get Style-Docs and provide a "remote" object as a facade API
-    this.remote('kwaledesign', 'Style-Docs', '1.0.4', function (err, remote) {
+    this.remote('kwaledesign', 'Style-Docs', '1.0.5', function (err, remote) {
       if (err) {
         return cb(err);
       }
