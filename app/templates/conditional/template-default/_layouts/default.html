@@ -19,12 +19,12 @@
 
     <% if (styleDocs) { %>
     <div class="header">
-      <a href="#0">Nav</a>
+      <a href="#0" class="js-nav-link">Nav</a>
       <h1 class="">Style-Docs</h1>
-      <a href="#0">Annotations</a>
+      <a href="#0" class="js-annotation-link">Annotations</a>
     </div>
 
-    <nav class="nav-slider is-active">
+    <nav class="nav-slider js-nav-slider is-active">
       <ul class="nav nav__vertical nav-styledocs--structure nav-styledocs--skin">
         <li><a href="/specification">Specification</a></li>
         <li><a href="/brandingguidelines">Branding Guidelines</a></li>
@@ -40,7 +40,7 @@
       </ul>
     </nav>
 
-    <section class="annotation-slider is-active">
+    <section class="annotation-slider js-annotation-slider is-active">
       this is the annotation slider...write notes here and link them to sections of the document
     </section>
     <% } %>
